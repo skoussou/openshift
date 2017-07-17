@@ -21,7 +21,7 @@ In the instructions below replace _$username_ with your own username or initials
 
 Clone the git repostitory to local disc.
 
-`git clone https://github.com/jmetso/openshift/tree/master/persitentvolume-sample.git
+`git clone https://github.com/jmetso/openshift/tree/master/persitentvolume-sample.git`
 
 Navigate to the _persistentvolume-sample_-directory.
 
