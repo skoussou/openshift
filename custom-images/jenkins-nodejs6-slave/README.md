@@ -34,7 +34,7 @@ Add the following into _metadata_ section in the imagestream object:
 
 Make sure that the indentations are correct.
 
-## Jenkins cofiguration
+## Jenkins configuration
 
 If you have built the image in the project where you have jenkins, you only need to restart jenkins for it to find the image. Jenkins will search for image streams and images with tags _role=jenkins-slave_ during start up.
 
