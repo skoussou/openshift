@@ -1,6 +1,6 @@
-# NodeJS 6 Jenkins slave
+# Node.js 6 Jenkins slave
 
-NodeJS 6 slave image for Jenkins. This work is based on the excellent node.js 4 image that is available in Openshift and in Github at (https://github.com/openshift/jenkins/tree/master/slave-nodejs) by Ben.
+Node.js 6 slave image for Jenkins. This work is based on the excellent node.js 4 image that is available in Openshift and in Github (https://github.com/openshift/jenkins/tree/master/slave-nodejs) by Ben.
 
 This image also includes chrome for unit tests.
 
