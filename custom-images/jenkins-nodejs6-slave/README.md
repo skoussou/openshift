@@ -6,9 +6,9 @@ This image also includes chrome for unit tests.
 
 ## Build the image
 
-The image can be built on Openshift with the Docker build strategy. To enable Jenkins to use the image the build must be created in either the project where jenkins is located.
+The image can be built on Openshift with the Docker build strategy. To enable Jenkins to use the image the build must be created in either the project where jenkins is located or made available via an image stream visible for Jenkins. I.e. either tag it to an image stream in the same project as Jenkins or into the global openshift namespace.
 
-First you need to create a build secret to access the repository:
+First you need to create a build secret to access the source repository (can be skipped if your git repo does not require authentication):
 
 `oc secrets new-basicauth <secret_name> --password=<token>`
 
