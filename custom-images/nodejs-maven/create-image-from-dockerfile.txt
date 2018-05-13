@@ -1,0 +1,9 @@
+docker build -t nodejs8-maven339:1.0 --rm=true .
+
+
+REPOSITORY                                                                      TAG                 IMAGE ID            CREATED             SIZE
+eap71-openshift-npm                                                             1.0                 32ba1c89bd3b        47 seconds ago      836 MB
+
+
+
+docker run -d --name maven-npm-container eap71-openshift-npm:1.0

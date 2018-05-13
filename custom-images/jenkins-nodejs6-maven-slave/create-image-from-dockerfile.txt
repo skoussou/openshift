@@ -1,0 +1,10 @@
+docker build -t jenkins-slave-nodejs-maven:1.0 --rm=true .
+
+
+
+REPOSITORY                                                                      TAG                 IMAGE ID            CREATED             SIZE
+jenkins-slave-nodejs-maven                                                      1.0                 0fb8163b31cc        37 seconds ago      570 MB
+
+
+
+docker run -d --name maven339-nodejs8-container jenkins-slave-nodejs-maven:1.0 java Main
