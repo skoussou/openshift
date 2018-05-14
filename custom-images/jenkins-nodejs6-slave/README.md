@@ -1,6 +1,6 @@
 # Node.js 6 Jenkins slave
 
-Node.js 6 slave image for Jenkins. This work is based on the excellent node.js 4 image that is available in Openshift and in Github (https://github.com/openshift/jenkins/tree/master/slave-nodejs) by Ben.
+Node.js 6 & Maven 3.3.9 slave image for Jenkins. This work is based on the excellent node.js 4 image that is available in Openshift and in Github (https://github.com/openshift/jenkins/tree/master/slave-nodejs) .
 
 This image also includes chrome for unit tests.
 
@@ -14,7 +14,7 @@ First you need to create a build secret to access the source repository (can be 
 
 Then you create the build:
 
-`oc new-build --name=jenkins-slave-nodejs6 https://github.com/jmetso/openshift.git --context-dir=custom-images/jenkins-nodejs6-slave --strategy=docker --build-secret=<secret name> --labels='role=jenkins-slave,app=jenkins'`
+`oc new-build --name=jenkins-slave-nodejs6 https://github.com/skoussou/openshift/openshift.git --context-dir=custom-images/jenkins-nodejs6-maven-slave --strategy=docker --build-secret=<secret name> --labels='role=jenkins-slave,app=jenkins'`
 
 If the build does not trigger automatically or you want to rebuild the image, you can trigger the build again with:
 
@@ -30,7 +30,7 @@ Add the following into _metadata_ section in the imagestream object:
 
 `  annotations:`
 
-`    slave-label: nodejs6`
+`    slave-label: nodejs6-maven`
 
 Make sure that the indentations are correct.
 
