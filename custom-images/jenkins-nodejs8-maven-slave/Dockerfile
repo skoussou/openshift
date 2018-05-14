@@ -1,7 +1,7 @@
 FROM openshift/jenkins-slave-base-centos7
 
 ####### MAINTAINER ############
-MAINTAINER "Red Hat Consulting Team" "stelios@redhat.com"
+MAINTAINER "Red Hat Consulting Team stelios@redhat.com"
 
 ####### CHANGE TO ROOT USER ############
 USER root
