@@ -6,12 +6,12 @@ MAINTAINER "Red Hat Consulting Team" "stelios@redhat.com"
 ####### CHANGE TO ROOT USER ############
 USER root
 
-ENV NODEJS_VERSION=6.x \
-    NPM_CONFIG_PREFIX=$HOME/.npm-global \
-    PATH=$HOME/node_modules/.bin/:$HOME/.npm-global/bin/:$PATH \
-    BASH_ENV=/usr/local/bin/scl_enable \
-    ENV=/usr/local/bin/scl_enable \
-    PROMPT_COMMAND=". /usr/local/bin/scl_enable"
+#ENV NODEJS_VERSION=6.x \
+#    NPM_CONFIG_PREFIX=$HOME/.npm-global \
+#    PATH=$HOME/node_modules/.bin/:$HOME/.npm-global/bin/:$PATH \
+#    BASH_ENV=/usr/local/bin/scl_enable \
+#    ENV=/usr/local/bin/scl_enable \
+#    PROMPT_COMMAND=". /usr/local/bin/scl_enable"
 
 COPY BINARIES/apache-maven-3.3.9-bin.tar.gz /tmp
 COPY BINARIES/nodesource-release-fc27-1.noarch.rpm /tmp
@@ -20,8 +20,8 @@ COPY BINARIES/nodesource-release-fc27-1.noarch.rpm /tmp
 RUN rpm -ihv /tmp/nodesource-release-fc27-1.noarch.rpm
 RUN yum install -y nodejs
 
-RUN chown -R 1001:0 $HOME && \
-    chmod -R g+rw $HOME
+#RUN chown -R 1001:0 $HOME && \
+#    chmod -R g+rw $HOME
 
 
 RUN tar xvf /tmp/apache-maven-3.3.9-bin.tar.gz
