@@ -16,11 +16,6 @@ ENV NODEJS_VERSION=6.x \
 COPY BINARIES/apache-maven-3.3.9-bin.tar.gz /tmp
 COPY BINARIES/nodesource-release-fc27-1.noarch.rpm /tmp
 
-# Install chrome
-COPY google-chrome.repo /etc/yum.repos.d/
-RUN yum install -y google-chrome-stable && \
-    yum clean all -y
-
 # Install NodeJS
 RUN rpm -ihv /tmp/nodesource-release-fc27-1.noarch.rpm
 RUN yum install -y nodejs
