@@ -1,39 +1,39 @@
-FROM registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift
+FROM openshift/jenkins-slave-base-centos7
 
 ####### MAINTAINER ############
 MAINTAINER "Red Hat Consulting Team" "stelios@redhat.com"
 
-####### BASE SOFTWARE ############
-# HTTP daemon
-# # RUN yum install -y httpd; \ 
-# yum clean all
-
 ####### CHANGE TO ROOT USER ############
 USER root
 
-############ Add custom repo files ############
-#COPY CUSTOM_REPOS/fedora.repo /etc/yum.repos.d/
-#COPY CUSTOM_REPOS/fedora-updates.repo /etc/yum.repos.d/
-#COPY CUSTOM_REPOS/fedora-updates-testing.repo /etc/yum.repos.d/
-#COPY CUSTOM_REPOS/fedora-cisco-openh264.repo /etc/yum.repos.d/
-#COPY CUSTOM_REPOS/nodesource-fc26.repo /etc/yum.repos.d/
+ENV NODEJS_VERSION=6.x \
+    NPM_CONFIG_PREFIX=$HOME/.npm-global \
+    PATH=$HOME/node_modules/.bin/:$HOME/.npm-global/bin/:$PATH \
+    BASH_ENV=/usr/local/bin/scl_enable \
+    ENV=/usr/local/bin/scl_enable \
+    PROMPT_COMMAND=". /usr/local/bin/scl_enable"
 
-COPY BINARIES/curl-7.53.1-16.fc26.src.rpm /tmp
+COPY contrib/bin/scl_enable /usr/local/bin/scl_enable
+
+# Install chrome
+COPY google-chrome.repo /etc/yum.repos.d/
+RUN yum install -y google-chrome-stable && \
+    yum clean all -y
+
+# Install NodeJS
+RUN yum install -y centos-release-scl-rh && \
+    INSTALL_PKGS="rh-nodejs6 rh-nodejs6-npm rh-nodejs6-nodejs-nodemon" && \
+    ln -s /usr/lib/node_modules/nodemon/bin/nodemon.js /usr/bin/nodemon && \
+    yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
+    rpm -V $INSTALL_PKGS && \
+    yum clean all -y
+
+
+RUN chown -R 1001:0 $HOME && \
+    chmod -R g+rw $HOME
+
+
 COPY BINARIES/apache-maven-3.3.9-bin.tar.gz /tmp
-
-# NODE Installattion
-#RUN yum -y install curl
-RUN rpm -ihv /tmp/curl-7.53.1-16.fc26.src.rpm
-RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash -
-RUN yum install -y nodejs
-
-# MAVEN Installation
-#RUN yum -y install maven
-#RUN curl --silent https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.3.9/apache-maven-3.3.9-bin.zip -O -J -L
-#RUN rpm -ihv /tmp/maven-3.3.9-9.fc26.noarch.rpm
-#RUN yum install -y maven
-
-RUN tar xvf /tmp/apache-maven-3.3.9-bin.tar.gz
 RUN mv apache-maven-3.3.9  /usr/local/apache-maven
 # Add the env variables to your ~/.bashrc file
 RUN export M2_HOME=/usr/local/apache-maven
@@ -42,4 +42,4 @@ RUN export PATH=$M2:$PATH
 # Execute these commands
 RUN source ~/.bashrc
 
-USER 185
+USER 1001
