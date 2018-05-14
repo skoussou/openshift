@@ -31,6 +31,6 @@ RUN export M2_HOME=/usr/local/apache-maven
 RUN export M2=$M2_HOME/bin 
 RUN export PATH=$M2:$PATH
 # Execute these commands
-RUN source ~/.bashrc
+#RUN source ~/.bashrc
 
 USER 1001
