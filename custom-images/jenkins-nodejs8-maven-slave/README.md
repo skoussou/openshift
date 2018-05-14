@@ -14,6 +14,10 @@ First you need to create a build secret to access the source repository (can be 
 
 Then you create the build:
 
+----
+oc new-build https://github.com/skoussou/openshift.git --context-dir="custom-images/jenkins-nodejs8-maven-slave"" --strategy=docker --name=jenkins-slave-nodejs8-maven --labels='role=jenkins-slave,app=jenkins'
+----
+
 `oc new-build --name=jenkins-slave-nodejs6 https://github.com/jmetso/openshift.git --context-dir=custom-images/jenkins-nodejs6-slave --strategy=docker --build-secret=<secret name> --labels='role=jenkins-slave,app=jenkins'`
 
 If the build does not trigger automatically or you want to rebuild the image, you can trigger the build again with:
