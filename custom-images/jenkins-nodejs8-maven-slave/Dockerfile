@@ -27,6 +27,8 @@ RUN yum install -y nodejs
 RUN chown 1001:0 /tmp/install-maven.sh && \
     chmod +x /tmp/install-maven.sh
 
+RUN /tmp/install-maven.sh
+
 #RUN tar xvf /tmp/apache-maven-3.3.9-bin.tar.gz
 #RUN mv apache-maven-3.3.9  /usr/local/apache-maven
 # Add the env variables to your ~/.bashrc file
