@@ -13,7 +13,7 @@ MAINTAINER "Red Hat Consulting Team stelios@redhat.com"
 
 COPY BINARIES/apache-maven-3.3.9-bin.tar.gz /tmp
 COPY BINARIES/nodesource-release-fc27-1.noarch.rpm /tmp
-COPY SCRIPTS/.bashrc ~/
+#COPY SCRIPTS/.bashrc ~/
 #RUN mv ~/bashrc ~/.bashrc
 
 #RUN chown -R 1001:0 $HOME && \
@@ -28,11 +28,11 @@ COPY SCRIPTS/.bashrc ~/
 RUN tar xvf /tmp/apache-maven-3.3.9-bin.tar.gz
 RUN mv apache-maven-3.3.9  /usr/local/apache-maven
 # Add the env variables to your ~/.bashrc file
-#RUN export M2_HOME=/usr/local/apache-maven
-#RUN export M2=$M2_HOME/bin 
-#RUN export PATH=$M2:$PATH
+RUN export M2_HOME=/usr/local/apache-maven
+RUN export M2=$M2_HOME/bin 
+RUN export PATH=$M2:$PATH
 # Execute these commands
-RUN source ~/.bashrc
+#RUN source ~/.bashrc
 
 
 ####### CHANGE TO ROOT USER ############
