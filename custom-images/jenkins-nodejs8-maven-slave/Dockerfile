@@ -24,7 +24,7 @@ RUN yum install -y nodejs
 #RUN chown -R 1001:0 $HOME && \
 #    chmod -R g+rw $HOME
 
-RUN chown /tmp/install-maven.sh && \
+RUN chown 1001:0 /tmp/install-maven.sh && \
     chmod +x /tmp/install-maven.sh
 
 #RUN tar xvf /tmp/apache-maven-3.3.9-bin.tar.gz
