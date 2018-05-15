@@ -15,8 +15,8 @@ USER root
 
 COPY BINARIES/apache-maven-3.3.9-bin.tar.gz /tmp
 COPY BINARIES/nodesource-release-fc27-1.noarch.rpm /tmp
-COPY SCRIPTS/bashrc ~/
-RUN mv ~/bashrc ~/.bashrc
+COPY SCRIPTS/.bashrc ~/
+#RUN mv ~/bashrc ~/.bashrc
 
 #RUN chown -R 1001:0 $HOME && \
 #    chmod -R g+rw $HOME
