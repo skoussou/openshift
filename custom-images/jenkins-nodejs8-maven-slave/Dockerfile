@@ -3,8 +3,6 @@ FROM openshift/jenkins-slave-base-centos7
 ####### MAINTAINER ############
 MAINTAINER "Red Hat Consulting Team stelios@redhat.com"
 
-####### CHANGE TO ROOT USER ############
-#USER root
 
 #ENV NODEJS_VERSION=6.x \
 #    NPM_CONFIG_PREFIX=$HOME/.npm-global \
@@ -36,6 +34,9 @@ RUN mv apache-maven-3.3.9  /usr/local/apache-maven
 # Execute these commands
 RUN source ~/.bashrc
 
+
+####### CHANGE TO ROOT USER ############
+USER root
 
 # Install NodeJS
 RUN rpm -ihv /tmp/nodesource-release-fc27-1.noarch.rpm
