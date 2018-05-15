@@ -22,8 +22,8 @@ COPY SCRIPTS/.bashrc ~/
 #    chmod -R g+rw $HOME
 
 # Instal MAVEN
-RUN chown 1001:0 ~/.bashrc && \
-    chmod g+rw ~/.bashrc
+#RUN chown 1001:0 ~/.bashrc && \
+#    chmod g+rw ~/.bashrc
 
 #RUN /tmp/install-maven.sh
 
