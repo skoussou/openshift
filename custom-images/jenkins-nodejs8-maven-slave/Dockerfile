@@ -4,7 +4,7 @@ FROM openshift/jenkins-slave-base-centos7
 MAINTAINER "Red Hat Consulting Team stelios@redhat.com"
 
 ####### CHANGE TO ROOT USER ############
-USER root
+#USER root
 
 #ENV NODEJS_VERSION=6.x \
 #    NPM_CONFIG_PREFIX=$HOME/.npm-global \
