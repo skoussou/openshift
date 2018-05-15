@@ -27,10 +27,16 @@ COPY BINARIES/nodesource-release-fc27-1.noarch.rpm /tmp
 
 RUN tar xvf /tmp/apache-maven-3.3.9-bin.tar.gz
 RUN mv apache-maven-3.3.9  /usr/local/apache-maven
+
+ENV MAVEN_HOME /usr/local/apache-maven
+ENV M2_HOME /usr/local/apache-maven
+
 # Add the env variables to your ~/.bashrc file
 RUN export M2_HOME=/usr/local/apache-maven
 RUN export M2=$M2_HOME/bin 
 RUN export PATH=$M2:$PATH
+
+
 # Execute these commands
 #RUN source ~/.bashrc
 
